@@ -1,0 +1,228 @@
+<?xml version="1.0"?>
+<fee>
+   <zone id="z1">
+      <title>Northern Europe</title>
+      <percentage>1.8</percentage>
+      <countries id="cz1">
+          <country id="DNK">
+             <title>Dänemark</title>
+          </country>
+          <country id="FRO">
+             <title>Färöer</title>
+          </country>
+          <country id="GRL">
+             <title>Grönland</title>
+          </country>
+          <country id="GRL">
+             <title>Grönland</title>
+          </country>
+          <country id="FIN">
+             <title>Finnland</title>
+          </country>
+          <country id="ALA">
+             <title>Alandinseln</title>
+          </country>
+          <country id="ISL">
+             <title>Alandinseln</title>
+          </country>
+          <country id="NOR">
+             <title>Norwegen</title>
+          </country>
+          <country id="SWE">
+             <title>Schweden</title>
+          </country>
+      </countries>
+   </zone>
+   <zone id="z2">
+      <title> Europe I</title>
+      <percentage>2</percentage>
+      <countries id="cz2">
+          <country id="BEL">
+             <title>Belgien</title>
+          </country>
+          <country id="DEU">
+             <title>Deutschland</title>
+          </country>
+          <country id="EST">
+             <title>Estland</title>
+          </country>
+          <country id="FRA">
+             <title>Frankreich</title>
+          </country>
+          <country id="GUY">
+             <title>Französisch Guyana</title>
+          </country>
+          <country id="GLP">
+             <title>Guadeloupe</title>
+          </country>
+          <country id="MYT">
+             <title>Mayotte</title>
+          </country>
+          <country id="MTQ">
+             <title>Martinique</title>
+          </country>
+          <country id="REU">
+             <title>Réunion</title>
+          </country>
+          <country id="GIB">
+             <title>Gibraltar</title>
+          </country>
+          <country id="GRC">
+             <title>Griechenland</title>
+          </country>
+          <country id="GBR">
+             <title>Großbritannien</title>
+          </country>
+          <country id="+++???">
+             <title>Kanalinseln</title>
+          </country>
+          <country id="+++???">
+             <title>Isle of Man</title>
+          </country>
+          <country id="IRL">
+             <title>Irland</title>
+          </country>
+          <country id="ITA">
+             <title>Italien</title>
+          </country>
+          <country id="LUX">
+             <title>Luxemburg</title>
+          </country>
+          <country id="MLT">
+             <title>Malta</title>
+          </country>
+          <country id="MCO">
+             <title>Monaco</title>
+          </country>
+          <country id="MNE">
+             <title>Montenegro</title>
+          </country>
+          <country id="NLD">
+             <title>Niederlande</title>
+          </country>
+          <country id="AUT">
+             <title>Österreich</title>
+          </country>
+          <country id="PRT">
+             <title>Portugal</title>
+          </country>
+          <country id="SMR">
+             <title>San Marion</title>
+          </country>
+          <country id="SVK">
+             <title>Slowakei</title>
+          </country>
+          <country id="SVN">
+             <title>Slowenien</title>
+          </country>
+          <country id="ESP">
+             <title>Spanien</title>
+          </country>
+          <country id="VAT">
+             <title>Vatikanstadt</title>
+          </country>
+          <country id="CYP">
+             <title>Zypern</title>
+          </country>
+      </countries>
+   </zone>
+   <zone id="z3">
+      <title> Europe II</title>
+      <percentage>3</percentage>
+      <countries id="cz3">
+          <country id="ALB">
+             <title>Albanien</title>
+          </country>
+          <country id="AND">
+             <title>Andorra</title>
+          </country>
+          <country id="BLR">
+             <title>Belarus</title>
+          </country>
+          <country id="BIH">
+             <title>Bosnien und Herzegowina</title>
+          </country>
+          <country id="BGR">
+             <title>Bulgarien</title>
+          </country>
+          <country id="GEO">
+             <title>Georgien</title>
+          </country>
+          <country id="+++???">
+             <title>Kosovo</title>
+          </country>
+          <country id="HRV">
+             <title>Kroatien</title>
+          </country>
+          <country id="LVA">
+             <title>Lettland</title>
+          </country>
+          <country id="LIE">
+             <title>Liechtenstein</title>
+          </country>
+          <country id="LTU">
+             <title>Litauen</title>
+          </country>
+          <country id="MKD">
+             <title>Mazedonien</title>
+          </country>
+          <country id="POL">
+             <title>Polen</title>
+          </country>
+          <country id="MDL">
+             <title>Republik Moldau</title>
+          </country>
+          <country id="ROU">
+             <title>Rumänien</title>
+          </country>
+          <country id="RUS">
+             <title>Russland</title>
+          </country>
+          <country id="CHE">
+             <title>Schweiz</title>
+          </country>
+          <country id="CHE">
+             <title>Schweiz</title>
+          </country>
+          <country id="SRB">
+             <title>Serbien</title>
+          </country>
+          <country id="CZE">
+             <title>Tschechische Republik</title>
+          </country>
+          <country id="TUR">
+             <title>Türkei</title>
+          </country>
+          <country id="UKR">
+             <title>Ukraine</title>
+          </country>
+          <country id="HUN">
+             <title>Ungarn</title>
+          </country>
+      </countries>
+   </zone>
+   <zone id="z4">
+      <title> USA</title>
+      <percentage>2</percentage>
+      <countries id="cz4">
+          <country id="USA">
+             <title>Vereinigte Staaten von Amerika</title>
+          </country>
+      </countries>
+   </zone>
+   <zone id="z5">
+      <title> Canada</title>
+      <percentage>2</percentage>
+      <countries id="cz5">
+          <country id="CAN">
+             <title>Kanada</title>
+          </country>
+      </countries>
+   </zone>
+   <zone id="z6">
+      <title> Other Countries</title>
+      <percentage>3.3</percentage>
+      <other>1</other>
+   </zone>
+</fee>
+

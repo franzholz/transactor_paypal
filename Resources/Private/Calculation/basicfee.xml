@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<fee>
+   <currency id="ARS">
+      <title> Argentinische Peso</title>
+      <price> 2</price>
+   </currency>
+   <currency id="AUD">
+      <title> Australische Dollar</title>
+      <price> 0.3</price>
+   </currency>
+   <currency id="BRL">
+      <title> Brasilianische Real</title>
+      <price> 0.4</price>
+   </currency>
+   <currency id="GBP">
+      <title> Britische Pfund</title>
+      <price> 0.2</price>
+   </currency>
+   <currency id="DKK">
+      <title> Dänische Kronen</title>
+      <price> 2.6</price>
+   </currency>
+   <currency id="EUR">
+      <title> Euro</title>
+      <price> 0.35</price>
+   </currency>
+</fee>

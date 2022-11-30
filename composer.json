@@ -1,0 +1,45 @@
+{
+  "name": "jambagecom/transactor-paypal",
+  "type": "typo3-cms-extension",
+  "description": "Provides the possibility to transact payments via PayPal using the Payment Transactor extension.",
+  "keywords": [
+    "TYPO3",
+    "extension",
+    "payment",
+    "gateway",
+    "transactor",
+    "paypal"
+  ],
+  "support": {
+    "issues": "https://jambage.com/kontakt/forum.html"
+  },
+  "homepage": "https://jambage.com",
+  "authors": [
+    {
+      "name": "Franz Holzinger",
+      "role": "Developer",
+      "homepage": "https://ttproducts.de"
+    }
+  ],
+  "license": [
+    "GPL-2.0-or-later"
+  ],
+  "require": {
+    "php": "^7.4 || ^8.0",
+    "typo3/cms-core": "^9.5 || ^10.4 || ^11.5",
+    "jambagecom/transactor": "^0.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "JambageCom\\TransactorPaypal\\": "Classes"
+    }
+  },
+  "replace": {
+    "typo3-ter/transactor-paypal": "self.version"
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "transactor_paypal"
+    }
+  }
+}

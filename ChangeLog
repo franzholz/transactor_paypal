@@ -1,0 +1,22 @@
+2022-11-30  Franz Holzinger <franz@ttproducts.de>
+    * final version for implementation of Website Payments Standard with PDT and IPN
+
+2021-12-31  Franz Holzinger <franz@ttproducts.de>
+    * add compatibility for TYPO3 11
+
+2020-04-01  Franz Holzinger <franz@ttproducts.de>
+    * add compatibility for TYPO3 10
+    * remove compatibility for TYPO3 6.2
+
+2017-09-23 Franz Holzinger  <franz@ttproducts.de>
+    * restructuring for namespace
+
+2016-04-27 Franz Holzinger  <franz@ttproducts.de>
+	* new feature: PDT validation with comparision of the amount paid to PayPal with the amount from the shop
+
+2015-09-05 Franz Holzinger  <franz@ttproducts.de>
+	* adaption for TYPO3 6.2
+	* new feature: IPN
+
+2008-04-18 Franz Holzinger  <franz@fholzinger.com>
+	* initial upload of former paymentlib_paypal into SVN at sf.net and TER

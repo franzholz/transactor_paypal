@@ -1,0 +1,60 @@
+
+lib.transactor_paypal {
+  extName = transactor_paypal
+  extTitle = PayPal Website Payments Standard
+  extInfo = PayPal enables any business or consumer with an email address to securely, conveniently, and cost-effectively send and receive payments online.
+  extImage = EXT:transactor_paypal/Resources/Public/Images/paypal_euro.gif
+  gatewaymode = form
+  paymentMethod = paypal_webpayment_standard
+  currency = EUR
+  templateFile = EXT:transactor/Resources/Private/Templates/PaymentHtmlTemplate.html
+
+  returnPID = 15
+  cancelPID = 12
+}
+
+
+
+plugin.tt_products.payment {
+  radio = 1
+  10.title = Rechnung
+  20.title = Vorkasse
+  30.title = Bankeinzug
+  40.title = Nachnahme
+  40.price = 8.50
+  50.title = Bankeinzug Schweiz
+  50.price = 16.80
+  60.title = Vorkasse Schweiz
+  60.price = 16.80
+  90.title = PayPal Gateway
+  90.handleLib = transactor
+  90.handleLib < lib.transactor_paypal
+  90.image.file = EXT:transactor_paypal/Resources/Public/Images/paypal_euro.gif
+  90.mode = Paypal
+}
+
+
+
+Website-Einstellungen
+Rückleitungs-URL:
+
+Automatische Rückleitung in den Shop
+Diese muss nicht eingestellt werden, weil der Parameter von dieser Extension direkt an PayPal geleitet wird.
+
+
+Benachrichtigungen über Sofortzahlungen
+Sofortige Zahlungsbestätigung erhalten
+
+http://meine-shop-domaene.de/index.php?id=40&eID=paypal
+
+
+Es sind nur unter "Verkäufer/Händler" Einstellungen zu machen.
+
+
+Anforderungen an die Rückleitungs-URL: Für die Einrichtung der Funktion Automatische Rückleitung müssen folgende Anforderungen erfüllt werden:
+
+    Den Nutzungsbedingungen zufolge müssen Sie auf der Seite, die durch die Rückleitungs-URL angezeigt wird, einen Hinweis angeben, der den Käufer wissen lässt, dass die Zahlung erfolgt ist und die Transaktion abgeschlossen wurde.
+    Sie müssen auf der Seite, die durch die Rückleitungs-URL angezeigt wird, einen Hinweis angeben, der den Käufer wissen lässt, dass ihm die Transaktionsdetails per E-Mail zugesendet werden.
+    Beispiel: Danke für Ihre Zahlung. Ihre Transaktion wurde abgeschlossen und Sie erhalten per E-Mail eine Bestätigung für Ihren Kauf. Sie können sich unter www.paypal.de in Ihr Konto einloggen, um die Transaktionsdetails anzuzeigen.
+
+

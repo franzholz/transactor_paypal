@@ -1,0 +1,9 @@
+<paymentmethods>
+	<paypal_webpayment_standard type="array">
+		<label>LLL:EXT:transactor_paypal/Resources/Private/Language/locallang.xml:webpayment_standard</label>
+		<type>directdebit</type>
+		<iconpath>EXT:transactor_paypal/Resources/Public/Images/de-pp_plus-logo-quer_ohne_PUI_365x60px.jpg</iconpath>
+        <gatewaymode>form</gatewaymode>
+	</paypal_webpayment_standard>
+</paymentmethods>
+

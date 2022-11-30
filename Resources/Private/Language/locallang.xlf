@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-09-23T10:19:01Z" product-name="transactor_paypal">
+		<header/>
+		<body>
+			<trans-unit id="webpayment_standard" xml:space="preserve">
+				<source>Standard paypal webpayment</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

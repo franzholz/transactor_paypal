@@ -1,0 +1,17 @@
+# cat = Paypal/general; type=string; label=Your business e-mail: Here you should set your e-mail-address which you have entered for account registration at Paypal. Typically this e-mail identifies your business at Paypal
+business = john@doe.com
+# cat = Paypal/general; type=boolean; label=Production: Determine if your website is for Production. Otherwise PayPal will be activated for Development. Production uses the website https://www.Paypal.com/cgi-bin/webscr. Development uses the Sandbox website at https://www.sandbox.Paypal.com/cgi-bin/webscr.
+production = 0
+# cat = Paypal/payment; type=boolean; label=Send customer data: Check this if you want to send the customer informations to Paypal. This is typically used to prefill fields at Paypal
+sendPersonInfo = 1
+# cat = Paypal/payment; type=boolean; label=Create new Paypal users: Check this if a user should be redirected to account-setup at Paypal if he doesn't have a Paypal-account
+createNewUser = 1
+# cat = Paypal/payment; type=boolean; label=Send basket: Check if you want the basket content to be sent to Paypal. If you send the basket, all containing articles will be shown on Paypal
+sendBasket = 1
+# cat = Paypal/payment; type=boolean; label=Pending is verified: Accept also a pending payment status as verified. Otherwise only a Completed payment will be verified.
+pendingVerification = 1
+# cat = Paypal/pdt-synchronisation; type=string; label=PDT identity token: This token must be generated once on your PayPal account and it is needed for receiving informations about the processed transaction. You must also have activated the Payment Data Transfer (PDT). If the PDT identity token is not set then it is not possible to check if any transaction was finished successfully. Otherwise you must verify this in your PayPal account.
+pdtToken =
+# cat = Paypal/pdt-synchronisation; type=string; label=PDT amount difference: During the PDT check the expected amount is verified with the amount paid via PayPal. There might be a rounding difference allowed which will be added with a thousandth of the expected amount.
+pdtAmountDifference = 0.1
+
