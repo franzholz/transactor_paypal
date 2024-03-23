@@ -16,7 +16,7 @@ Example Setup
 
     lib.transactor_paypal {
         extName = transactor_paypal
-        extTitle = PayPal REST API
+        extTitle = PayPal Website Payments Standard
         extInfo = PayPal enables any business or consumer with an email address to securely, conveniently, and cost-effectively send and receive payments online.
         extImage = EXT:transactor_paypal/Resources/Public/Images/paypal_euro.gif
         gatewaymode = form
