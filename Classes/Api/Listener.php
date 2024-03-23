@@ -71,15 +71,10 @@ class Listener extends \JambageCom\Transactor\Api\Listener {
 
         if (isset($row['config_ext'])) {
              $conf = GeneralUtility::xml2array($row['config_ext']);
-        } else if (
-            defined('TYPO3_version') &&
-            version_compare(TYPO3_version, '9.0.0', '>=')
-        ) {
+        } else {
             $conf = GeneralUtility::makeInstance(
                 \TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class
             )->get('transactor_paypal');
-        } else { // before TYPO3 9
-            $conf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['transactor_paypal']);
         }
 
         // check that txn_id has not been previously processed

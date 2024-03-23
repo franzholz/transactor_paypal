@@ -151,6 +151,7 @@ class Gateway extends \JambageCom\Transactor\Domain\GatewayBase {
     public function transactionFormGetHiddenFields () {
         $detailsArray = $this->getDetails();
         $basket = $detailsArray['basket'];
+        debug ($basket, 'transactionFormGetHiddenFields $basket');
         $address = $detailsArray['address'];
         $total = $detailsArray['total'];
         $transaction = $detailsArray['transaction'];
@@ -191,7 +192,7 @@ class Gateway extends \JambageCom\Transactor\Domain\GatewayBase {
             isset($total['goodstax'])
         ) {
             $discountAmount = -$basket['VOUCHER']['0']['amount'];
-            $discountRate = ($discountAmount /  $total['goodstax']) * 100;
+            $discountRate = ($discountAmount / $total['goodstax']) * 100;
             unset($basket['VOUCHER']);
         }
 
@@ -199,28 +200,28 @@ class Gateway extends \JambageCom\Transactor\Domain\GatewayBase {
             $fieldsArray['cmd'] = '_cart';
             $count = 0;
 
-            foreach($basket as $sort => $items) {
-                foreach($items as $k1 => $item) {
-                    $count++;
+            foreach($basket as $sort => $item) {
+            debug ($item, '$item');
+                $count++;
+                debug ($item, '$item');
 
-                    $item['handling'] += $item['payment'];
-                    unset($item['payment']);
-            // consider the taxes for the discount:
-                    $itemDiscount = $discountRate * (1 + $item['taxpercent'] / 100);
-                    $item['discount_rate'] = $itemDiscount;
-                    $item['discount_rate2'] = $itemDiscount;
+                $item['handling'] += $item['payment'];
+                unset($item['payment']);
+        // consider the taxes for the discount:
+                $itemDiscount = $discountRate * (1 + $item['taxpercent'] / 100);
+                $item['discount_rate'] = $itemDiscount;
+                $item['discount_rate2'] = $itemDiscount;
 
-                    foreach($item as $itemField => $itemValue) {
-                        if (
-                            $itemField == 'shipping' ||
-                            $itemField == 'handling'
-                        ) {
-                            $value = $itemValue;
-                        } else {
-                            $value = preg_replace($modSourceArray, $modDestinationArray, $itemValue);
-                        }
-                        $fieldsArray[$itemField . '_' . $count] = $value;
+                foreach($item as $itemField => $itemValue) {
+                    if (
+                        $itemField == 'shipping' ||
+                        $itemField == 'handling'
+                    ) {
+                        $value = $itemValue;
+                    } else {
+                        $value = preg_replace($modSourceArray, $modDestinationArray, $itemValue);
                     }
+                    $fieldsArray[$itemField . '_' . $count] = $value;
                 }
             }
         } else {
@@ -307,7 +308,7 @@ class Gateway extends \JambageCom\Transactor\Domain\GatewayBase {
                 $conf['pdtToken'] != '' &&
                 $this->getGatewayMode() == GatewayMode::FORM
             ) {
-                $resultsArray = 
+                $resultsArray =
                     $this->requestPDT(
                         GeneralUtility::_GET('tx'),
                         $reference,
@@ -363,7 +364,7 @@ class Gateway extends \JambageCom\Transactor\Domain\GatewayBase {
     public function transactionGetParameters () {
         return $this->parameters;
     }
-    
+
     public function setParameters ($parameters) {
         $this->parameters = $parameters;
     }
@@ -527,7 +528,7 @@ class Gateway extends \JambageCom\Transactor\Domain\GatewayBase {
                 $row['user'] .= ':' . $errstr;
                 $row['state'] = State::APPROVE_NOK;
             }
-        } else if ( 
+        } else if (
             $row['state'] == State::APPROVE_OK
         ) {
             $row['state'] = State::APPROVE_DUPLICATE;
@@ -600,8 +601,7 @@ class Gateway extends \JambageCom\Transactor\Domain\GatewayBase {
 // PayPal zieht ab:  0,02*1020,77 und 0,35€  :  20,41€ + 0,35€ = 20,76€
         $businessCharge = true;
         if (
-            $businessCharge &&
-            version_compare(TYPO3_version, '6.2.0', '>=')
+            $businessCharge
         ) {
             $basicFee = 0.35;
             $basicBreak = false;
