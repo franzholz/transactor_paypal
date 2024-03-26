@@ -5,7 +5,7 @@
 ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'PayPal Website Payments Standard',
+    'title' => 'PayPal Payments Standard',
     'description' => 'Provides the possibility to transact payments via PayPal based on Webpayment Standard using the Payment Transactor extension.',
     'category' => 'misc',
     'author' => 'Franz Holzinger',
