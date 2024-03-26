@@ -47,6 +47,6 @@ PayPal, however, has announced a new product/service replacing the WPS buttons c
 * 26th March 2024:
     *    The development of version 0.5.0 has been stopped.
     *    Another version will be programmed which bases on the PayPal REST API.
-    This however will be sold as a licence.
+         This however will be sold as a licence.
 
 
