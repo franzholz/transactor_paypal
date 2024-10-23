@@ -36,7 +36,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-
+use JambageCom\TransactorPaypal\Api\Listener;
 
 class OldServerResponseController {
 
@@ -51,7 +51,7 @@ class OldServerResponseController {
     {
             // Make instance and call main():
         /** @var \JambageCom\TransactorPaypal\Api\Listener $SOBE */
-        $SOBE = GeneralUtility::makeInstance(\JambageCom\TransactorPaypal\Api\Listener::class);
+        $SOBE = GeneralUtility::makeInstance(Listener::class);
         $result = $SOBE->main();
 
         return new NullResponse();
