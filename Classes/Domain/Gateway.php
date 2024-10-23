@@ -42,6 +42,7 @@ namespace JambageCom\TransactorPaypal\Domain;
  *
  */
 
+use JambageCom\Transactor\Constants\Field;
 use JambageCom\Transactor\Constants\GatewayMode;
 use JambageCom\Transactor\Constants\State;
 use JambageCom\Transactor\Constants\Message;
@@ -50,7 +51,6 @@ use JambageCom\Transactor\Constants\Message;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-
 
 
 class Gateway extends \JambageCom\Transactor\Domain\GatewayBase {
@@ -151,7 +151,6 @@ class Gateway extends \JambageCom\Transactor\Domain\GatewayBase {
     public function transactionFormGetHiddenFields () {
         $detailsArray = $this->getDetails();
         $basket = $detailsArray['basket'];
-        debug ($basket, 'transactionFormGetHiddenFields $basket');
         $address = $detailsArray['address'];
         $total = $detailsArray['total'];
         $transaction = $detailsArray['transaction'];
@@ -166,10 +165,6 @@ class Gateway extends \JambageCom\Transactor\Domain\GatewayBase {
         $fieldsArray['notify_url'] = $transaction['notifyurl'];
         $fieldsArray['invoice'] = $transaction['orderuid'];
         $fieldsArray['custom'] = $this->getReferenceUid();
-
-        if ($this->useBasketCharset) {
-            $fieldsArray['charset'] = $total['charset'];
-        }
 
         // *******************************************************
         // Set article vars if selected
@@ -201,18 +196,26 @@ class Gateway extends \JambageCom\Transactor\Domain\GatewayBase {
             $count = 0;
 
             foreach($basket as $sort => $item) {
-            debug ($item, '$item');
                 $count++;
-                debug ($item, '$item');
-
-                $item['handling'] += $item['payment'];
-                unset($item['payment']);
+                $paypalItem = [];
+                $paypalItem['item_name'] = $item[Field::NAME];
+                $paypalItem['quantity'] = $item[Field::QUANTITY];
+                $paypalItem['amount'] = $item[Field::PRICE_NOTAX];
+                $paypalItem['payment'] = $item[Field::PAYMENT_NOTAX]
+                ?? 0;
+                $paypalItem['shipping'] = $item[Field::SHIPPING_NOTAX] ?? 0;
+                $paypalItem['handling'] = $item[Field::HANDLING_NOTAX] ?? 0;
+                $paypalItem['taxpercent'] = $item[Field::TAX_PERCENTAGE];
         // consider the taxes for the discount:
-                $itemDiscount = $discountRate * (1 + $item['taxpercent'] / 100);
-                $item['discount_rate'] = $itemDiscount;
-                $item['discount_rate2'] = $itemDiscount;
+                $paypalItem['tax'] = $item[Field::PRICE_ONLYTAX];
+                $paypalItem['totaltax'] = $item[Field::PRICE_TOTAL_ONLYTAX];
+                $paypalItem['item_number'] = $item[Field::ITEMNUMBER];
 
-                foreach($item as $itemField => $itemValue) {
+                $itemDiscount = $discountRate * (1 + $item[Field::TAX_PERCENTAGE] / 100);
+                $paypalItem['discount_rate'] = $itemDiscount;
+                $paypalItem['discount_rate2'] = $itemDiscount;
+
+                foreach($paypalItem as $itemField => $itemValue) {
                     if (
                         $itemField == 'shipping' ||
                         $itemField == 'handling'
@@ -251,7 +254,7 @@ class Gateway extends \JambageCom\Transactor\Domain\GatewayBase {
                 $value = preg_replace($modSourceArray, $modDestinationArray, $v);
                 $fieldsArray[$k] = $value;
             }
-            $fieldsArray['payer'] = $invoice['person']['email'];
+            $fieldsArray['payer'] = $address['person']['email'];
         }
 
         $finalFieldsArray = array();
