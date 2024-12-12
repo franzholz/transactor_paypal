@@ -42,15 +42,18 @@ namespace JambageCom\TransactorPaypal\Domain;
  *
  */
 
+
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\PathUtility;
+
+use JambageCom\Transactor\Api\Localization;
 use JambageCom\Transactor\Constants\Field;
 use JambageCom\Transactor\Constants\GatewayMode;
 use JambageCom\Transactor\Constants\State;
 use JambageCom\Transactor\Constants\Message;
 
 
-
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 
 class Gateway extends \JambageCom\Transactor\Domain\GatewayBase {
@@ -290,7 +293,7 @@ class Gateway extends \JambageCom\Transactor\Domain\GatewayBase {
 
         $resultsArray = $this->getResultsArray();
         $dbRow = $this->getTransaction($reference);
-        $paymentStatus = GeneralUtility::_GET('st');
+        $paymentStatus = $GLOBALS['TYPO3_REQUEST']->getQueryParams()['st'] ?? null;
         $conf = $this->getConf();
 
         if (
@@ -313,12 +316,12 @@ class Gateway extends \JambageCom\Transactor\Domain\GatewayBase {
             ) {
                 $resultsArray =
                     $this->requestPDT(
-                        GeneralUtility::_GET('tx'),
+                        $GLOBALS['TYPO3_REQUEST']->getQueryParams()['tx'] ?? null,
                         $reference,
                         $dbRow
                     );
             } else {
-                $amt = GeneralUtility::_GET('amt');
+                $amt = $GLOBALS['TYPO3_REQUEST']->getQueryParams()['amt'] ?? null;
                 $resultsArray = $dbRow;
 
                 if (abs($dbRow['amount'] - $amt) < 1) {
@@ -394,7 +397,7 @@ class Gateway extends \JambageCom\Transactor\Domain\GatewayBase {
         $conf = $this->getConf();
         $config = $this->getConfig();
         $formuri = $this->transactionFormGetActionURI();
-        $languageObj = GeneralUtility::makeInstance(\JambageCom\Transactor\Api\Localization::class);
+        $languageObj = GeneralUtility::makeInstance(Localization::class);
         $resultsArray = array();
         $row =
             $this->getEmptyResultsArray(
@@ -619,7 +622,7 @@ class Gateway extends \JambageCom\Transactor\Domain\GatewayBase {
 // cn_currency_iso_3
 // XML Datei basicfee.xml auslesen
                 $filename = 'Resources/Private/Calculation/percentalfee.xml';
-                $file = GeneralUtility::getFileAbsFileName(\TYPO3\CMS\Core\Utility\PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath($this->getExtensionKey())) . $filename);
+                $file = GeneralUtility::getFileAbsFileName(PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath($this->getExtensionKey())) . $filename);
 
                 if ($file && @is_file($file)) {
 
@@ -672,7 +675,7 @@ class Gateway extends \JambageCom\Transactor\Domain\GatewayBase {
 
 // XML Datei basicfee.xml auslesen
             $filename = 'Resources/Private/Calculation/basicfee.xml';
-            $file = GeneralUtility::getFileAbsFileName(\TYPO3\CMS\Core\Utility\PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath($this->getExtensionKey())) . $filename);
+            $file = GeneralUtility::getFileAbsFileName(PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath($this->getExtensionKey())) . $filename);
 
             if ($file && @is_file($file)) {
 
