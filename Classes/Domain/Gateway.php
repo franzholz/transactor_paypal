@@ -375,8 +375,8 @@ class Gateway extends \JambageCom\Transactor\Domain\GatewayBase {
         $this->parameters = $parameters;
     }
 
-    public function transactionFailed ($resultsArray) {
-
+    public function transactionFailed ($resultsArray): bool
+    {
         $result = false;
         if ($resultsArray['state'] == State::APPROVE_NOK) {
             $result = true;
