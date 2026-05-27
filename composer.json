@@ -26,8 +26,8 @@
   ],
   "require": {
     "php": "^8.0",
-    "typo3/cms-core": "^12.4 || ^13.4",
-    "jambagecom/transactor": "^0.12"
+    "typo3/cms-core": "^12.4 || ^13.4 || ^14",
+    "jambagecom/transactor": "^0.13 || ^0.14 || ^0.15"
   },
   "autoload": {
     "psr-4": {
@@ -40,6 +40,10 @@
   "extra": {
     "typo3/cms": {
       "extension-key": "transactor_paypal"
+      "version": "0.7.0",
+      "Package": {
+          "providesPackages": {}
+      }
     }
   }
 }
